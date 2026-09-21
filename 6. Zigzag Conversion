@@ -1,0 +1,25 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if (numRows == 1 || s.length() <= numRows) {
+            return s;
+        }
+        String[] c = new String[numRows];
+        for (int p = 0; p < c.length; p++) {
+            c[p] = "";
+        }
+        int cr = 0;
+        boolean g = false;
+        for (char ch : s.toCharArray()) {
+            c[cr] += ch;
+            if (cr == 0 || cr == numRows - 1) {
+                g = !g;
+            }
+            cr += g ? 1 : -1;
+        }
+        String f = "";
+        for (String a : c) {
+            f = f + a;
+        }
+        return f;
+    }
+}
